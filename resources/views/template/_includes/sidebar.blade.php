@@ -26,28 +26,28 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
+                    
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link active">
+                            <a href="{{route('admin.dashboard')}}" class="nav-link">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Página Inicial</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link ">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Cadastrar nova conexão</p>
+                            <a href="{{route('admin.newUser')}}" class="nav-link ">
+                                <i class="fas fa-user nav-icon"></i>
+                                <p>Cadastrar novo usuario</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a href="{{route("admin.createConnection")}}" class="nav-link">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Criar nova conexão</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route("admin.listConnections")}}" class="nav-link">
                                 <i class="fas fa-list nav-icon"></i>
                                 <p>Listagem de conexão</p>
                             </a>
