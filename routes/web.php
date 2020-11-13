@@ -21,6 +21,14 @@ Route::get('/dashboard', function () {
     return view("admin.dashboard");
 })->name("admin.dashboard");
 
-Route::get("/dashboard/newConnection", function(){
-    return view('admin.newConnection');
-})->name("admin.newConnection");
+Route::get("/dashboard/newUser", function(){
+    return view('admin.newUser');
+})->name("admin.newUser");
+
+Route::get("/dashboard/createConnection", function(){
+    return view('admin.createGroup');
+})->name("admin.createConnection");
+
+Route::get("/dashboard/listConnections", function(){
+    return view('admin.listConnections');
+})->name("admin.listConnections");
