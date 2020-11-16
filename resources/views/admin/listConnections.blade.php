@@ -32,7 +32,7 @@
 
                         @foreach ($conexoes as $conexao)<tr>
 
-                            <td>{{$conexao->id}}.</td>
+                            <td>{{$conexao->id}}</td>
                             <td>
                                 {{$conexao->name}}
                             </td>

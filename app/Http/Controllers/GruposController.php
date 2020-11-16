@@ -55,6 +55,7 @@ class GruposController extends Controller
 
         try {
             $data = $request->all();
+            dd($data);
             $array = [
                 'name' => $data['nome']
             ];
