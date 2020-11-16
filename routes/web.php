@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GruposController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,14 @@ Route::get('/dashboard', function () {
     return view("admin.dashboard");
 })->name("admin.dashboard");
 
-Route::get("/dashboard/newUser", function () {
-    return view('admin.newUser');
-})->name("admin.newUser");
-
+Route::get("/dashboard/newUser", [UsuariosController::class, 'new_user'])->name("admin.newUser");
+Route::get("/dashboard/users", [UsuariosController::class, 'index'])->name("admin.index");
+Route::post("/dashboard/store", [UsuariosController::class, 'store'])->name('admin.storeUser');
 Route::get("/dashboard/createConnection", [GruposController::class, 'create'])->name("admin.createConnection");
 
-Route::post('/dashboard/createGroup', [GruposController::class ,'store'])->name('admin.createGroup');
-Route::put("/dashboard/updateGroup", [ GruposController::class, 'update'])->name('admin.updateGroup');
-Route::get("/dashboard/listConnections",  [GruposController::class ,'index'])->name("admin.listConnections");
+Route::post('/dashboard/createGroup', [GruposController::class, 'store'])->name('admin.createGroup');
+Route::put("/dashboard/updateGroup", [GruposController::class, 'update'])->name('admin.updateGroup');
+Route::get("/dashboard/listConnections",  [GruposController::class, 'index'])->name("admin.listConnections");
 Route::get('/dashboard/deleteConnection/{id}', [GruposController::class, 'destroy'])->name('admin.delete');
 
 /*

@@ -21,7 +21,8 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                <form action="{{route('admin.storeUser')}}" method="post" id="create_user">
+                    {{csrf_field()}}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="full_name">Nome completo</label>
@@ -40,8 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Senha</label>
-                            <input type="text" class="form-control" id="password" name="password"
-                                placeholder="****** ">
+                            <input type="text" class="form-control" id="password" name="password" placeholder="****** ">
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -58,6 +58,52 @@
     </div>
 </section>
 <!-- /.content -->
+@endsection
 
+@section('script')
+<script>
+    $("#create_user").submit(function(e) {
+        e.preventDefault();
+        let url = $(this).attr('action');
+        let empty = [];
+        let data = $(this).serializeArray();
+        data.forEach(element => {
+            if(!element.value){
+                empty.push(element.name);
+            }
+        });
+        if(empty.length > 0){
+            return Swal.fire(
+                'keep me Calm',
+                `Os campos ${empty} estão vazios.`,
+                'error'
+            )
+        }
+        $.post(url, data, ( response ) => {
+            console.log(response)
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
 
+            if(response.status == false){
+                Toast.fire({
+                    icon: 'error',
+                    title: response.message
+                });
+            }else{
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message
+                });
+                $('#create_user').each (function(){
+                    this.reset();
+                });
+            }
+        });
+        
+    });
+</script>
 @endsection
