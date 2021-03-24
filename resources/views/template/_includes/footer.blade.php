@@ -8,7 +8,6 @@
 <script src="{{asset('site/jquery.js')}}"></script>
 {{-- <script src="{{asset('site/bootstrap.js')}}"></script> --}}
 <script src="{{asset('site/adminlte.js')}}"></script>
-<script src="{{asset('site/helpers.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 

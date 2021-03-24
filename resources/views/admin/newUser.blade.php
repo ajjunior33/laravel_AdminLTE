@@ -67,31 +67,42 @@
         let url = $(this).attr('action');
         let empty = [];
         let data = $(this).serializeArray();
-        if(check(data)){
-            $.post(url, data, ( response ) => {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-
-                if(response.status == false){
-                    Toast.fire({
-                        icon: 'error',
-                        title: response.message
-                    });
-                }else{
-                    Toast.fire({
-                        icon: 'success',
-                        title: response.message
-                    });
-                    $('#create_user').each (function(){
-                        this.reset();
-                    });
-                }
-            });
+        data.forEach(element => {
+            if(!element.value){
+                empty.push(element.name);
+            }
+        });
+        if(empty.length > 0){
+            return Swal.fire(
+                'keep me Calm',
+                `Os campos ${empty} estão vazios.`,
+                'error'
+            )
         }
+        $.post(url, data, ( response ) => {
+            console.log(response)
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            if(response.status == false){
+                Toast.fire({
+                    icon: 'error',
+                    title: response.message
+                });
+            }else{
+                Toast.fire({
+                    icon: 'success',
+                    title: response.message
+                });
+                $('#create_user').each (function(){
+                    this.reset();
+                });
+            }
+        });
         
     });
 </script>

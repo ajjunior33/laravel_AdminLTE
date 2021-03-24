@@ -47,10 +47,6 @@
             <!-- /.col -->
 
         </div>
-        <a href="{{route('admin.connection.index')}}" class="btn btn-primary">
-            <i class="fas fa-plus"></i>
-            Conectar novo cliente
-        </a>
     </div>
 </section>
 <!-- /.content -->
